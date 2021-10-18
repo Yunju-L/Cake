@@ -636,6 +636,7 @@ int main() {
 		else if (stage == 5) {
 			cream->hide();
 			cream_choco->hide();
+			cream_berry->hide();
 			next->show();
 
 		}
@@ -734,7 +735,7 @@ int main() {
 			deco_candle->show();
 			deco_choco->show();
 			done->show();
-			done->locate(scene2, 500, 20);
+			done->locate(scene2, 550, 20);
 			stage = 6;
 		}
 		else if (stage == 6) {
