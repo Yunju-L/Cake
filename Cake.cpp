@@ -25,7 +25,13 @@ void oven_complete(ObjectPtr oven, ObjectPtr cake, ObjectPtr degree, ObjectPtr t
 
 }
 
-
+void result_(ObjectPtr result, ObjectPtr end, int chili_state, int sugar_state, int butter_state, int salt_state, int flour_choice) {
+	result->show();
+	end->show();
+	if (chili_state == 1) result->setImage("Images/결과_매움.png");
+	else if (sugar_state == 0 || butter_state == 0) result->setImage("Images/결과_부족.png");
+	else if (salt_state == 1 || flour_choice == -1) result->setImage("Images/결과_이상.png");
+}
 
 int main() {
 
@@ -575,14 +581,8 @@ int main() {
 
 	deco_choco->setOnMouseCallback([&](ObjectPtr object, int x, int y, MouseAction action)->bool {
 
-		if (stage == 7) {
-			result->show();
-			end->show();
-			if (chili_state == 1) result->setImage("Images/결과_매움.png");
-			else if (sugar_state == 0 || butter_state == 0) result->setImage("Images/결과_부족.png");
-			else if (salt_state == 1 || flour_choice == -1) result->setImage("Images/결과_이상.png");
-		}
-		else if (deco_choco_state == 0) {
+
+		if (deco_choco_state == 0) {
 			deco_choco_->show();
 			deco_choco_state = 1;
 		}
@@ -594,6 +594,18 @@ int main() {
 		return true;
 		});
 
+	deco_choco_->setOnMouseCallback([&](ObjectPtr object, int x, int y, MouseAction action)->bool {
+		
+		if (stage == 7) {
+			result->show();
+			end->show();
+			if (chili_state == 1) result->setImage("Images/결과_매움.png");
+			else if (sugar_state == 0 || butter_state == 0) result->setImage("Images/결과_부족.png");
+			else if (salt_state == 1 || flour_choice == -1) result->setImage("Images/결과_이상.png");
+		}
+
+		return true;
+		});;
 
 	//***********************************거실-stage7:평가***********************************//
 
